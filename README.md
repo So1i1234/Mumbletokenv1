@@ -1,4 +1,5 @@
 # Mumbletokenv1
+dependincies=pyinstaller>=6.0
 Compressed token efficient language translator along with copyable prompt dictionary so your ai can understand the launguage
 What is included
 mumbledtoken.exe — ready-to-run Windows app.
