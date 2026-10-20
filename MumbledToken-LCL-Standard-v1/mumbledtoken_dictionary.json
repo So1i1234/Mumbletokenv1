@@ -1,0 +1,218 @@
+{
+  "$format": "LCL vocabulary reference + M∞ v0.2 shared key",
+  "$version": "1.0",
+  "about": {
+    "name": "LCL standard vocabulary for MumbledToken",
+    "purpose": "A human-readable, extensible vocabulary for compact structured information and a shared key for exact M∞ JSON references.",
+    "limits": [
+      "Vocabulary labels do not automatically compress arbitrary text.",
+      "M∞ shared-key mode matches a complete canonical JSON value exactly.",
+      "No universal tokenizer savings or automatic lossless reconstruction is promised. Preserve meaning-bearing details explicitly."
+    ]
+  },
+  "anchors": {
+    "§": "Protocol or system-level section marker.",
+    "►": "User/input section marker.",
+    "◄": "Assistant/output section marker.",
+    "¶": "Block or section divider.",
+    "⚙️": "Metadata or configuration marker.",
+    "::": "Definition or key-to-meaning marker."
+  },
+  "structural_vocabulary": {
+    "OBJ": "Objective or desired outcome.",
+    "REQ": "Requirement or constraint.",
+    "CTX": "Context or background.",
+    "DEP": "Dependency or prerequisite.",
+    "REF": "Reference or source.",
+    "ARG": "Argument or parameter.",
+    "SOL": "Solution or resolution.",
+    "ERR": "Error or failure state.",
+    "TST": "Test or verification step.",
+    "IMP": "Implementation detail.",
+    "ALT": "Alternative or fallback.",
+    "VAL": "Concrete value or output.",
+    "IN": "Input.",
+    "OUT": "Output.",
+    "CFG": "Configuration.",
+    "EX": "Example.",
+    "NOTE": "Note.",
+    "DEF": "Definition.",
+    "STEP": "Ordered step.",
+    "END": "End marker when needed."
+  },
+  "semantic_vocabulary": {
+    "ENTITY": "Thing, person, organization, or object being described.",
+    "EVENT": "Occurrence situated in time.",
+    "ACT": "Action or activity.",
+    "AGENT": "Actor responsible for an action.",
+    "PATIENT": "Entity affected by an action.",
+    "TARGET": "Intended destination or recipient.",
+    "SOURCE": "Origin or source.",
+    "STATE": "Condition at a point or interval.",
+    "CLAIM": "Proposition presented as a claim.",
+    "BELIEF": "Proposition held by a specified holder.",
+    "REPORT": "Content attributed to a reporter or source.",
+    "EVIDENCE": "Information supporting or challenging a claim.",
+    "INTERPRETATION": "One possible reading of ambiguous content.",
+    "AMB": "Ambiguity; retain all plausible readings when relevant.",
+    "REL": "Explicit relation between entities or propositions.",
+    "TYPE": "Declared kind of a value or object.",
+    "ID": "Stable identifier within the stated scope.",
+    "NAME": "Human-readable name.",
+    "CONTENT": "Nested or asserted content.",
+    "POLARITY": "Positive or negative stance.",
+    "MODALITY": "Possibility, necessity, permission, obligation, or intent.",
+    "CONF": "Confidence value and its scale.",
+    "ATTR": "Attribution to a source or speaker.",
+    "ENDORSE": "Whether current speaker supports an attributed claim."
+  },
+  "logic_and_relations": {
+    "→": "Maps to, causes, produces, or follows; specify the relation when ambiguity matters.",
+    "←": "Derived from, depends on, or sourced from; specify which relation applies.",
+    "↔": "Explicit two-way relation or equivalence; state which one.",
+    "≠": "Not equal to or explicitly excluded.",
+    "+": "Conjunction: both apply.",
+    "/": "Alternative; use brackets or explicit OR when exclusivity is unclear.",
+    "AND": "All listed conditions apply.",
+    "OR": "At least one listed condition applies.",
+    "NOT": "Negation of the scoped expression.",
+    "IF": "Condition.",
+    "THEN": "Consequence when condition holds.",
+    "ELSE": "Alternative consequence.",
+    "XOR": "Exactly one alternative applies.",
+    "ALL": "Universal quantification over the stated set.",
+    "ANY": "At least one item in the stated set.",
+    "NONE": "No items satisfy the stated condition.",
+    "=": "Assignment or equality; indicate intended reading.",
+    ">": "Greater than.",
+    ">=": "Greater than or equal to.",
+    "<": "Less than.",
+    "<=": "Less than or equal to.",
+    "IN": "Membership or containment; specify domain if needed.",
+    "HAS": "Possession or relation; name the relation when ambiguity matters.",
+    "BEFORE": "Temporal precedence.",
+    "AFTER": "Temporal succession.",
+    "DURING": "Temporal containment/overlap; use precise interval relation when needed.",
+    "CAUSES": "Causal relation, not mere sequence.",
+    "BECAUSE": "Stated reason or explanation.",
+    "PURPOSE": "Intended goal; does not assert success."
+  },
+  "data_and_time": {
+    "NULL": "Explicit absence of a value; distinct from missing or unknown.",
+    "UNKNOWN": "Value is not known.",
+    "MISSING": "Expected value was not supplied.",
+    "BOOL": "Boolean true/false.",
+    "NUM": "Number; preserve exactness requirements.",
+    "STR": "Text string.",
+    "LIST": "Ordered collection; preserve order.",
+    "SET": "Unordered collection; state deduplication rules.",
+    "MAP": "Key/value mapping.",
+    "UNIT": "Measurement unit; keep attached to value.",
+    "TIME": "Time value; prefer ISO 8601 with timezone/offset where known.",
+    "INSTANT": "Point in time.",
+    "INTERVAL": "Start/end time span; specify bounds.",
+    "DURATION": "Elapsed amount of time with unit.",
+    "TZ": "Timezone identifier or offset.",
+    "PRECISION": "Known granularity or uncertainty of a time/value.",
+    "RANGE": "Inclusive/exclusive bounds must be stated.",
+    "ORDER": "Meaningful sequence position."
+  },
+  "provenance_vocabulary": {
+    "PROV_ENTITY": "Information or thing with provenance.",
+    "PROV_ACTIVITY": "Process that used or generated entities.",
+    "PROV_AGENT": "Person/software responsible for an activity.",
+    "USED": "Activity used an entity.",
+    "GENERATED": "Activity generated an entity.",
+    "ASSOCIATED": "Activity associated with an agent.",
+    "DERIVED": "Entity derived from another entity.",
+    "ATTRIBUTED": "Entity attributed to an agent.",
+    "SOURCE_REF": "Traceable source identifier or URL."
+  },
+  "grammar": {
+    "scope": "Use [...] for grouping only when boundaries are unambiguous. Nest deliberately.",
+    "definitions": "Use NAME::meaning or an equivalent structured mapping; escape literal delimiters.",
+    "compounds": "PascalCase and snake_case are optional readability conventions, not guaranteed atomic tokens.",
+    "unknown_terms": "Keep unknown terms verbatim and define them locally; never silently discard them.",
+    "abbreviations": "Define each abbreviation once per key/version.",
+    "versioning": "Version shared dictionaries and distribute the identical version to sender and receiver."
+  },
+  "preservation_rules": [
+    "Preserve negation, modality, quantities, units, dates, timezones, uncertainty, attribution, scope, conditionals, and causal distinctions.",
+    "Do not remove articles, possessives, or auxiliary verbs when doing so changes meaning.",
+    "Keep ambiguity explicit; do not choose an interpretation without evidence.",
+    "Use exact JSON types and keep list order. Distinguish null, missing, and unknown.",
+    "Treat shorthand as a notation aid, not encryption or a guaranteed lossless natural-language codec."
+  ],
+  "standards": [
+    {
+      "name": "W3C PROV-O",
+      "url": "https://www.w3.org/TR/prov-o/",
+      "use": "Provenance entities, activities, agents, attribution, and derivation."
+    },
+    {
+      "name": "W3C OWL-Time",
+      "url": "https://www.w3.org/TR/owl-time/",
+      "use": "Instants, intervals, durations, and temporal relations."
+    },
+    {
+      "name": "JSON Schema Draft 2020-12",
+      "url": "https://json-schema.org/draft/2020-12",
+      "use": "Describing the shape and types of structured JSON data."
+    }
+  ],
+  "shared_key": {
+    "E17": {
+      "type": "event",
+      "agent": "Mira",
+      "action": "attend",
+      "time": "future"
+    },
+    "B01": {
+      "type": "belief",
+      "holder": "I",
+      "polarity": "negative",
+      "content": {
+        "type": "future_event",
+        "agent": "Alex",
+        "event": "come"
+      }
+    },
+    "AMB1": {
+      "type": "ambiguous",
+      "surface": "I saw the person with the telescope",
+      "interpretations": [
+        {
+          "instrument": "telescope",
+          "relation": "used_to_see"
+        },
+        {
+          "instrument": "telescope",
+          "relation": "possessed_by_person"
+        }
+      ]
+    },
+    "REP1": {
+      "type": "report",
+      "reporter": "Morgan",
+      "content": {
+        "type": "claim",
+        "speaker": "Morgan",
+        "content": "Alex lied"
+      },
+      "endorsed_by_current_speaker": false
+    },
+    "SEQ1": {
+      "type": "sequence",
+      "items": [
+        "first",
+        "second"
+      ]
+    },
+    "MEAS1": {
+      "type": "measurement",
+      "value": 0.125,
+      "unit": "μs",
+      "note": "±2%"
+    }
+  }
+}
